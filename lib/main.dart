@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:noy_kovcheg/screens/noy_screen.dart';
+import 'screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Kovcheg',
       theme: ThemeData.dark(),
-      home: NoyScreen(),
+      home: HomePage(),
     );
   }
 }

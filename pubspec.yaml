@@ -63,6 +63,8 @@ flutter:
     - assets/noy/start_noy_img/
     - assets/noy/noy_bg_img/
     - assets/noy/noy_bluda/
+    - assets/noy/noy_bluda/category/
+    - assets/home_img/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
