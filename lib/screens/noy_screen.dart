@@ -58,66 +58,40 @@ class _NoyScreenState extends State<NoyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.grey.withOpacity(0.1),
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            size: 25,
+          ),
+          onPressed: () {
+            Navigator.of(context)
+                .pop(); // При нажатии на кнопку "назад" будет выполнен возврат на предыдущий экран
+          },
+        ),
+        title: Image.asset(
+          'assets/logo/noyfull.png',
+          height: 40,
+        ),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.qr_code_2),
+            iconSize: 25,
+            onPressed: () {},
+          ),
+          SizedBox(
+            width: 10,
+          ),
+        ],
+      ),
       body: SingleChildScrollView(
         physics: AlwaysScrollableScrollPhysics(),
         child: SafeArea(
           child: Column(
             children: [
-              Stack(
-                children: [
-                  // БекГраунд
-                  Image.asset(
-                    'assets/noy/noy_bg_img/noy_bg_start.jpg',
-                    fit: BoxFit.cover,
-                    width: double.infinity,
-                    height: 400,
-                  ),
-                  // Полосы картинок
-                  Positioned.fill(
-                    child: ShaderMask(
-                      blendMode: BlendMode.dstOut,
-                      shaderCallback: (rect) {
-                        return LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Colors.transparent,
-                              Colors.transparent,
-                              Colors.black.withOpacity(0.2),
-                              Colors.black.withOpacity(0.2),
-                              Colors.black,
-                            ],
-                            stops: [
-                              0,
-                              0.62,
-                              0.67,
-                              0.85,
-                              1,
-                            ]).createShader(rect);
-                      },
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              height: 30,
-                            ),
-                            ImageListView(
-                              startIndex: 1,
-                            ),
-                            SizedBox(
-                              height: 0,
-                            ),
-                            ImageListView(
-                              startIndex: 10,
-                              durection: 45,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              // oldStartNoy(),
               SizedBox(
                 height: 5,
               ),
@@ -141,40 +115,107 @@ class _NoyScreenState extends State<NoyScreen> {
                       ],
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
-                    Container(
-                      height: 140,
-                      child: ListView.builder(
-                        itemCount: noyCategory.length,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.horizontal,
-                        itemExtent: 100,
-                        itemBuilder: ((context, index) => Column(
-                              children: [
-                                SizedBox(
-                                  height: 78,
-                                  width: 78,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(16),
-                                    child: Image.asset(
-                                      '${noyCategory[index].imageAssets}',
-                                      fit: BoxFit.cover,
+                    FadeAnimation(
+                      intervalEnd: 0.8,
+                      child: Container(
+                        height: 140,
+                        child: ListView.builder(
+                          itemCount: noyCategory.length,
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          itemExtent: 100,
+                          itemBuilder: ((context, index) => Column(
+                                children: [
+                                  SizedBox(
+                                    height: 78,
+                                    width: 78,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(16),
+                                      child: Image.asset(
+                                        '${noyCategory[index].imageAssets}',
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  "${noyCategory[index].foodName}",
-                                  style: TextStyle(fontSize: 10),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ],
-                            )),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    "${noyCategory[index].foodName}",
+                                    style: TextStyle(fontSize: 10),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ],
+                              )),
+                        ),
                       ),
-                    )
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          "Меню",
+                          style: kH2Text,
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    GridView.builder(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: 0.62,
+                        crossAxisSpacing: 25,
+                        mainAxisSpacing: 10,
+                      ),
+                      itemCount: 2,
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) => InkWell(
+                        onTap: () {},
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: 140,
+                              width: double.infinity,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(16),
+                                child: Image.asset(
+                                  '${noyCategory[index].imageAssets}',
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              "Название",
+                              style: TextStyle(fontSize: 20),
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              "350гр",
+                              style: TextStyle(fontSize: 12),
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              "₴300",
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -255,6 +296,63 @@ class _NoyScreenState extends State<NoyScreen> {
           ],
         ),
       ),
+    );
+  }
+
+  Stack oldStartNoy() {
+    return Stack(
+      children: [
+        // БекГраунд
+        Image.asset(
+          'assets/noy/noy_bg_img/noy_bg_start.jpg',
+          fit: BoxFit.cover,
+          width: double.infinity,
+          height: 400,
+        ),
+        // Полосы картинок
+        Positioned.fill(
+          child: ShaderMask(
+            blendMode: BlendMode.dstOut,
+            shaderCallback: (rect) {
+              return LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Colors.transparent,
+                    Colors.transparent,
+                    Colors.black.withOpacity(0.2),
+                    Colors.black.withOpacity(0.2),
+                    Colors.black,
+                  ],
+                  stops: [
+                    0,
+                    0.62,
+                    0.67,
+                    0.85,
+                    1,
+                  ]).createShader(rect);
+            },
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 70,
+                  ),
+                  FadeAnimation(
+                    intervalStart: 0.7,
+                    child: ImageListView(
+                      startIndex: 1,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 0,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

@@ -115,25 +115,35 @@ class _HomePageState extends State<HomePage>
                               ),
                             );
                           },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage('assets/home_img/noy.png'),
-                                fit: BoxFit.cover,
-                              ),
-                              borderRadius: BorderRadius.circular(20),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black45, // цвет тени
-                                  offset: Offset(0,
-                                      2), // смещение тени относительно контейнера
-                                  blurRadius: 6, // радиус размытия тени
+                          child: Stack(children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage('assets/home_img/noy.png'),
+                                  fit: BoxFit.cover,
                                 ),
-                              ],
+                                borderRadius: BorderRadius.circular(20),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black45, // цвет тени
+                                    offset: Offset(0,
+                                        2), // смещение тени относительно контейнера
+                                    blurRadius: 6, // радиус размытия тени
+                                  ),
+                                ],
+                              ),
+                              height: 180,
+                              width: double.infinity,
                             ),
-                            height: 180,
-                            width: double.infinity,
-                          ),
+                            Positioned(
+                              top: 0,
+                              child: Image(
+                                image:
+                                    AssetImage("assets/logo/kovcheglogo.png"),
+                                height: 60,
+                              ),
+                            ),
+                          ]),
                         ),
                       ),
                       SizedBox(

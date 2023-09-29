@@ -2,8 +2,9 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:noy_kovcheg/animations/fade_animation.dart';
 
-import '../screens/food_detail.dart';
+import '../screens/food_detail_noy.dart';
 
 class ImageListView extends StatefulWidget {
   const ImageListView(
@@ -52,19 +53,22 @@ class _ImageListViewState extends State<ImageListView> {
 
   @override
   Widget build(BuildContext context) {
-    return Transform.rotate(
-      angle: 1.96 * pi,
-      child: SizedBox(
-        height: 130,
-        child: ListView.builder(
-            controller: _scrollController,
-            scrollDirection: Axis.horizontal,
-            itemCount: 10,
-            itemBuilder: (BuildContext context, int index) {
-              return _ImageTile(
-                  image:
-                      'assets/noy/start_noy_img/${widget.startIndex + index}.jpg');
-            }),
+    return FadeAnimation(
+      intervalStart: 0.5,
+      child: Transform.rotate(
+        angle: 1.96 * pi,
+        child: SizedBox(
+          height: 130,
+          child: ListView.builder(
+              controller: _scrollController,
+              scrollDirection: Axis.horizontal,
+              itemCount: 10,
+              itemBuilder: (BuildContext context, int index) {
+                return _ImageTile(
+                    image:
+                        'assets/noy/start_noy_img/${widget.startIndex + index}.png');
+              }),
+        ),
       ),
     );
   }
@@ -82,7 +86,7 @@ class _ImageTile extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => FoodDetail(
+            builder: (_) => FoodDetailNoy(
               image: image,
             ),
           ),
