@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:noy_kovcheg/animations/fade_animation.dart';
 import 'package:noy_kovcheg/models/noy_category.dart';
-import 'package:noy_kovcheg/widgets/blur_container.dart';
 import 'package:noy_kovcheg/widgets/image_list_view.dart';
 
 import '../constants/const.dart';
@@ -211,7 +210,6 @@ class _NoyScreenState extends State<NoyScreen> {
         },
       ),
     );
-    ;
   }
 
   FadeAnimation _discountCard() {
