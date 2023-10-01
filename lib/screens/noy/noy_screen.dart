@@ -3,7 +3,8 @@ import 'package:noy_kovcheg/animations/fade_animation.dart';
 import 'package:noy_kovcheg/models/noy_category.dart';
 import 'package:noy_kovcheg/widgets/image_list_view.dart';
 
-import '../constants/const.dart';
+import '../../constants/const.dart';
+import '../../widgets/kovcher_appbar.dart';
 
 class NoyScreen extends StatefulWidget {
   const NoyScreen({Key? key}) : super(key: key);
@@ -58,40 +59,16 @@ class _NoyScreenState extends State<NoyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.grey.withOpacity(0.1),
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            size: 25,
-          ),
-          onPressed: () {
-            Navigator.of(context)
-                .pop(); // При нажатии на кнопку "назад" будет выполнен возврат на предыдущий экран
-          },
-        ),
-        title: Image.asset(
-          'assets/logo/noyfull.png',
-          height: 40,
-        ),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            icon: Icon(Icons.qr_code_2),
-            iconSize: 25,
-            onPressed: () {},
-          ),
-          SizedBox(
-            width: 10,
-          ),
-        ],
+      appBar: AppBarKovcheg(
+        img: "assets/logo/noyfull.png",
+        color: Colors.white,
       ),
       body: SingleChildScrollView(
         physics: AlwaysScrollableScrollPhysics(),
         child: SafeArea(
           child: Column(
             children: [
-              // oldStartNoy(),
+              oldStartNoy(),
               SizedBox(
                 height: 5,
               ),
@@ -155,7 +132,7 @@ class _NoyScreenState extends State<NoyScreen> {
                     Row(
                       children: [
                         Text(
-                          "Меню",
+                          "Кухня",
                           style: kH2Text,
                         ),
                       ],

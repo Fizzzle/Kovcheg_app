@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:noy_kovcheg/animations/fade_animation.dart';
 import 'package:noy_kovcheg/widgets/blur_container.dart';
 
-import '../constants/const.dart';
+import '../../constants/const.dart';
 
 class FoodDetailNoy extends StatelessWidget {
   const FoodDetailNoy({super.key, required this.image});
@@ -12,6 +12,34 @@ class FoodDetailNoy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.grey.withOpacity(0.1),
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            size: 25,
+          ),
+          onPressed: () {
+            Navigator.of(context)
+                .pop(); // При нажатии на кнопку "назад" будет выполнен возврат на предыдущий экран
+          },
+        ),
+        title: Image.asset(
+          'assets/logo/noyfull.png',
+          height: 40,
+        ),
+        centerTitle: true,
+        /* actions: [
+          IconButton(
+            icon: Icon(Icons.qr_code_2),
+            iconSize: 25,
+            onPressed: () {},
+          ),
+          SizedBox(
+            width: 10,
+          ),
+        ], */
+      ),
       backgroundColor: Colors.grey[300],
       body: SingleChildScrollView(
         child: SafeArea(

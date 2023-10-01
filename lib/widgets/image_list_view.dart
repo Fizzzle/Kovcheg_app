@@ -4,7 +4,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:noy_kovcheg/animations/fade_animation.dart';
 
-import '../screens/food_detail_noy.dart';
+import '../screens/noy/food_detail_noy.dart';
 
 class ImageListView extends StatefulWidget {
   const ImageListView(
@@ -62,6 +62,7 @@ class _ImageListViewState extends State<ImageListView> {
           child: ListView.builder(
               controller: _scrollController,
               scrollDirection: Axis.horizontal,
+              itemExtent: 140,
               itemCount: 10,
               itemBuilder: (BuildContext context, int index) {
                 return _ImageTile(
@@ -92,13 +93,47 @@ class _ImageTile extends StatelessWidget {
           ),
         );
       },
-      child: Hero(
-        tag: image,
-        child: Image.asset(
-          image,
-          width: 130,
+      child: Stack(children: [
+        Positioned(
+          top: 40,
+          left: 15,
+          child: Container(
+            width: 100,
+            height: 60,
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.3),
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
         ),
-      ),
+        Hero(
+          tag: image,
+          child: Column(
+            children: [
+              Image.asset(
+                image,
+                width: 130,
+              ),
+              Container(
+                width: 100,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.black.withOpacity(0.3),
+                ),
+                child: Text(
+                  "Популярное блюдо",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ]),
     );
   }
 }
