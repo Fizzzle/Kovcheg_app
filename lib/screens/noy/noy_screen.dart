@@ -4,6 +4,7 @@ import 'package:noy_kovcheg/models/noy_category.dart';
 import 'package:noy_kovcheg/widgets/image_list_view.dart';
 
 import '../../constants/const.dart';
+import '../../widgets/discount_card.dart';
 import '../../widgets/kovcher_appbar.dart';
 
 class NoyScreen extends StatefulWidget {
@@ -79,7 +80,12 @@ class _NoyScreenState extends State<NoyScreen> {
                     SizedBox(
                       height: 20,
                     ),
-                    _discountCard(),
+                    Discount_Card(
+                      title: "Живая музыка",
+                      subtitle: "Каждую субботу с 19:00",
+                      black: true,
+                      image: "assets/noy/noy_bg_img/music.jpg",
+                    ),
                     SizedBox(
                       height: 20,
                     ),
@@ -200,79 +206,6 @@ class _NoyScreenState extends State<NoyScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.share_location_sharp),
-              backgroundColor: Colors.black,
-              label: "Noy",
-              activeIcon: Icon(Icons.filter_tilt_shift_sharp)),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.keyboard_option_key_sharp),
-              backgroundColor: Colors.black,
-              label: "Ostrov"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.location_city),
-              backgroundColor: Colors.black,
-              label: "Gorod"),
-        ],
-        currentIndex: index,
-        unselectedItemColor: Colors.grey,
-        backgroundColor: kprimaryColor.withOpacity(0.2),
-        selectedItemColor: Colors.amber,
-        showUnselectedLabels: true,
-        onTap: (value) {
-          setState(() {
-            index = value;
-          });
-        },
-      ),
-    );
-  }
-
-  FadeAnimation _discountCard() {
-    return FadeAnimation(
-      intervalEnd: 0.7,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(16),
-        child: Stack(
-          children: [
-            SizedBox(
-                height: 150,
-                width: double.infinity,
-                child: Image.asset(
-                  "assets/noy/noy_bg_img/music.jpg",
-                  fit: BoxFit.cover,
-                )),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Container(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 10,
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.3),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Живая музыка",
-                      style: kH3TitleBlack,
-                    ),
-                    Text(
-                      "в эту субботу c 19.00",
-                      style: kH3SubTitleBlack,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 
@@ -316,7 +249,7 @@ class _NoyScreenState extends State<NoyScreen> {
                     height: 70,
                   ),
                   FadeAnimation(
-                    intervalStart: 0.7,
+                    intervalStart: 0.1,
                     child: ImageListView(
                       startIndex: 1,
                     ),
