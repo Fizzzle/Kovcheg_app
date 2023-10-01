@@ -26,7 +26,7 @@ class _OstrovRoomDetailState extends State<OstrovRoomDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: widget.isRoom
-          ? Color.fromARGB(255, 250, 175, 137)
+          ? Color.fromARGB(255, 75, 148, 199)
           : Color.fromARGB(255, 179, 174, 185),
       appBar: AppBarKovcheg(
         img: "assets/logo/ostrovlogo.png",

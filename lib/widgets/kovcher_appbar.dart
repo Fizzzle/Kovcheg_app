@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:noy_kovcheg/screens/qr_cam.dart';
 
 class AppBarKovcheg extends StatelessWidget implements PreferredSizeWidget {
   @override
@@ -28,6 +29,26 @@ class AppBarKovcheg extends StatelessWidget implements PreferredSizeWidget {
         img,
         height: 40,
       ),
+      actions: [
+        IconButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => QRScanCam(),
+              ),
+            );
+          },
+          icon: Icon(
+            Icons.qr_code_2,
+            color: color,
+            size: 25,
+          ),
+        ),
+        SizedBox(
+          width: 10,
+        ),
+      ],
       centerTitle: true,
     );
   }

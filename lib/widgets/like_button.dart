@@ -37,7 +37,7 @@ class _HeartIconState extends State<HeartIcon> {
             ),
           ],
         ),
-        duration: Duration(seconds: 3),
+        duration: Duration(seconds: 1),
         curve: Curves.easeInOut,
         child: Icon(
           isFavorite ? Icons.favorite : Icons.favorite_border,

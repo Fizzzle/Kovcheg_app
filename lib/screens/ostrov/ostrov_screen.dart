@@ -47,8 +47,10 @@ class _OstrovScreenState extends State<OstrovScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   children: [
-                    _category_list("Детсткие Комнаты", ostrovRoom, true),
-                    _category_list("Игры на PS5", ostrovPS, false),
+                    _category_list("Детсткие Комнаты", ostrovRoom,
+                        Icons.extension_outlined, true),
+                    _category_list("Игры на PS5", ostrovPS,
+                        Icons.sentiment_very_satisfied, false),
                     Text(
                       "Напитки",
                       style: kH2Text,
@@ -63,7 +65,7 @@ class _OstrovScreenState extends State<OstrovScreen> {
     );
   }
 
-  FadeAnimation _category_list(text, listname, room) {
+  FadeAnimation _category_list(text, listname, icon, room) {
     return FadeAnimation(
       intervalEnd: 0.8,
       child: Column(
@@ -76,7 +78,7 @@ class _OstrovScreenState extends State<OstrovScreen> {
                 style: kH2Text,
               ),
               Icon(
-                Icons.extension_outlined,
+                icon,
                 size: 25,
               )
             ],
