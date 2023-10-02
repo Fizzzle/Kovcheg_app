@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:noy_kovcheg/animations/fade_animation.dart';
 import 'package:noy_kovcheg/widgets/blur_container.dart';
 
 import '../../constants/const.dart';

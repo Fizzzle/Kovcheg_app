@@ -4,8 +4,8 @@ import 'package:noy_kovcheg/models/noy_category.dart';
 import 'package:noy_kovcheg/widgets/image_list_view.dart';
 
 import '../../constants/const.dart';
-import '../../widgets/discount_card.dart';
 import '../../widgets/kovcher_appbar.dart';
+import '../../widgets/like_button.dart';
 
 class NoyScreen extends StatefulWidget {
   const NoyScreen({Key? key}) : super(key: key);
@@ -71,137 +71,170 @@ class _NoyScreenState extends State<NoyScreen> {
             children: [
               oldStartNoy(),
               SizedBox(
-                height: 5,
+                height: 20,
               ),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 20,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(
+                      left: 20,
                     ),
-                    Discount_Card(
-                      title: "Живая музыка",
-                      subtitle: "Каждую субботу с 19:00",
-                      black: true,
-                      image: "assets/noy/noy_bg_img/music.jpg",
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Row(
+                    width: double.infinity,
+                    height: 20,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
                       children: [
                         Text(
-                          "Категории",
-                          style: kH2Text,
+                          "Горячие закуски",
+                          textAlign: TextAlign.center,
+                          style: kCategoryMenuText,
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Text(
+                          "Холодные закуски",
+                          textAlign: TextAlign.center,
+                          style: kCategoryMenuText,
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Text(
+                          "Кофе",
+                          textAlign: TextAlign.center,
+                          style: kCategoryMenuText,
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Text(
+                          "Салат",
+                          textAlign: TextAlign.center,
+                          style: kCategoryMenuText,
                         ),
                       ],
                     ),
-                    SizedBox(
-                      height: 20,
+                  ),
+                  Center(
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.keyboard_arrow_down,
+                        size: 30,
+                      ),
                     ),
-                    FadeAnimation(
-                      intervalEnd: 0.8,
-                      child: Container(
-                        height: 140,
-                        child: ListView.builder(
-                          itemCount: noyCategory.length,
-                          shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
-                          itemExtent: 100,
-                          itemBuilder: ((context, index) => Column(
+                  ),
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Text(
+                      "Советуем попробовать",
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white38,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    width: double.infinity,
+                    height: 240,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Container(
+                          width: 200,
+                          decoration: BoxDecoration(
+                            color: Colors.black26,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Stack(
                                 children: [
-                                  SizedBox(
-                                    height: 78,
-                                    width: 78,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(16),
-                                      child: Image.asset(
-                                        '${noyCategory[index].imageAssets}',
-                                        fit: BoxFit.cover,
-                                      ),
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(15),
+                                    child: Image.asset(
+                                      "assets/noy/noy_bluda/category/desert.jpg",
+                                      fit: BoxFit.cover,
+                                      height: 125,
                                     ),
                                   ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text(
-                                    "${noyCategory[index].foodName}",
-                                    style: TextStyle(fontSize: 10),
-                                    textAlign: TextAlign.center,
-                                  ),
+                                  HeartIcon(),
                                 ],
-                              )),
-                        ),
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          "Кухня",
-                          style: kH2Text,
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Container(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 10,
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Название",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 4,
+                                    ),
+                                    Container(
+                                      height: 30,
+                                      child: Text(
+                                        "Яйцо, курица, курица, яйцо, зелень, капуста, сметана, сметана, сметана, сметана",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 12,
+                                          color: Colors.white38,
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Center(
+                                      child: Container(
+                                          padding: EdgeInsets.symmetric(
+                                              vertical: 5, horizontal: 10),
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            color:
+                                                Colors.white.withOpacity(0.1),
+                                          ),
+                                          child: Text("299грн")),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    GridView.builder(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        childAspectRatio: 0.62,
-                        crossAxisSpacing: 25,
-                        mainAxisSpacing: 10,
-                      ),
-                      itemCount: 2,
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemBuilder: (context, index) => InkWell(
-                        onTap: () {},
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              height: 140,
-                              width: double.infinity,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(16),
-                                child: Image.asset(
-                                  '${noyCategory[index].imageAssets}',
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              "Название",
-                              style: TextStyle(fontSize: 20),
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              "350гр",
-                              style: TextStyle(fontSize: 12),
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              "₴300",
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                ],
+              )
             ],
           ),
         ),

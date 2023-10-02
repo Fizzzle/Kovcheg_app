@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 
 Color kprimaryColor = Color(0xff76805e);
 
+// NOY CATEGORY
+TextStyle kCategoryMenuText = TextStyle(
+  fontSize: 14,
+  fontWeight: FontWeight.bold,
+);
+
 // Text
 TextStyle kH2Text = TextStyle(fontSize: 28, fontWeight: FontWeight.bold);
 TextStyle kH1TextBlack = TextStyle(
