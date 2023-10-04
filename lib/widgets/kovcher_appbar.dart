@@ -14,6 +14,8 @@ class AppBarKovcheg extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.grey.withOpacity(0.1),
+      //backgroundColor: Colors.transparent,
+      // elevation: 0,
       leading: IconButton(
         icon: Icon(
           Icons.arrow_back_ios,

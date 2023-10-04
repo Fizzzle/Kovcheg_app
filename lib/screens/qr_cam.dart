@@ -12,9 +12,11 @@ class QRScanCam extends StatefulWidget {
 }
 
 class _QRScanCamState extends State<QRScanCam> {
+  String _scanBarcode =
+      'Unknown'; // Переменная доступна внутри всего класса _QRScanCamState
+
   Future<void> scanQR() async {
     String barcodeScanRes;
-    String _scanBarcode = 'Unknown';
     try {
       barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
           '#ff6666', 'Отмена', true, ScanMode.QR);
@@ -78,7 +80,7 @@ class _QRScanCamState extends State<QRScanCam> {
               height: 20,
             ),
             Text(
-              'Полученный код : $widget._scanBarcode\n',
+              'Полученный код :  ${_scanBarcode}',
               style: kH3SubTitle,
             ),
           ],

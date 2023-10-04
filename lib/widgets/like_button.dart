@@ -12,7 +12,7 @@ class _HeartIconState extends State<HeartIcon> {
   void _toggleFavorite() {
     setState(() {
       isFavorite = !isFavorite;
-      iconSize = isFavorite ? 31 : 30;
+      iconSize = 30;
     });
   }
 

@@ -45,11 +45,16 @@ class _OstrovRoomDetailState extends State<OstrovRoomDetail> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Image.asset(
-              widget.image,
-              fit: BoxFit.cover,
-              height: 300,
-              width: double.infinity,
+            ClipRRect(
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(10),
+                  bottomRight: Radius.circular(10)),
+              child: Image.asset(
+                widget.image,
+                fit: BoxFit.cover,
+                height: 300,
+                width: double.infinity,
+              ),
             ),
             SizedBox(
               height: 20,

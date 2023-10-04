@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:noy_kovcheg/animations/fade_animation.dart';
 import 'package:noy_kovcheg/models/noy_category.dart';
+import 'package:noy_kovcheg/screens/noy/menu_screen.dart';
+import 'package:noy_kovcheg/widgets/discount_card.dart';
 import 'package:noy_kovcheg/widgets/image_list_view.dart';
 
 import '../../constants/const.dart';
@@ -77,49 +79,35 @@ class _NoyScreenState extends State<NoyScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    padding: EdgeInsets.only(
-                      left: 20,
-                    ),
                     width: double.infinity,
                     height: 20,
-                    child: ListView(
+                    child: ListView.builder(
+                      itemCount: noyCategory.length,
                       scrollDirection: Axis.horizontal,
-                      children: [
-                        Text(
-                          "Горячие закуски",
-                          textAlign: TextAlign.center,
-                          style: kCategoryMenuText,
-                        ),
-                        SizedBox(
-                          width: 15,
-                        ),
-                        Text(
-                          "Холодные закуски",
-                          textAlign: TextAlign.center,
-                          style: kCategoryMenuText,
-                        ),
-                        SizedBox(
-                          width: 15,
-                        ),
-                        Text(
-                          "Кофе",
-                          textAlign: TextAlign.center,
-                          style: kCategoryMenuText,
-                        ),
-                        SizedBox(
-                          width: 15,
-                        ),
-                        Text(
-                          "Салат",
-                          textAlign: TextAlign.center,
-                          style: kCategoryMenuText,
-                        ),
-                      ],
+                      itemBuilder: ((context, index) => Row(
+                            children: [
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Text(
+                                "${noyCategory[index].foodName}",
+                                textAlign: TextAlign.center,
+                                style: kCategoryMenuText,
+                              ),
+                            ],
+                          )),
                     ),
                   ),
                   Center(
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => MenuNoyScreen(),
+                          ),
+                        );
+                      },
                       icon: Icon(
                         Icons.keyboard_arrow_down,
                         size: 30,
@@ -131,18 +119,9 @@ class _NoyScreenState extends State<NoyScreen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    child: Text(
-                      "Советуем попробовать",
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white38,
-                      ),
-                    ),
-                  ),
+                  noy_selection_title(title: "Советуем попробовать"),
                   SizedBox(
-                    height: 10,
+                    height: 20,
                   ),
                   Container(
                     width: double.infinity,
@@ -153,83 +132,92 @@ class _NoyScreenState extends State<NoyScreen> {
                         SizedBox(
                           width: 20,
                         ),
-                        Container(
-                          width: 200,
-                          decoration: BoxDecoration(
-                            color: Colors.black26,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Stack(
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(15),
-                                    child: Image.asset(
-                                      "assets/noy/noy_bluda/category/desert.jpg",
-                                      fit: BoxFit.cover,
-                                      height: 125,
-                                    ),
-                                  ),
-                                  HeartIcon(),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Container(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 10,
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Название",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 4,
-                                    ),
-                                    Container(
-                                      height: 30,
-                                      child: Text(
-                                        "Яйцо, курица, курица, яйцо, зелень, капуста, сметана, сметана, сметана, сметана",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 12,
-                                          color: Colors.white38,
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 20,
-                                    ),
-                                    Center(
-                                      child: Container(
-                                          padding: EdgeInsets.symmetric(
-                                              vertical: 5, horizontal: 10),
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            color:
-                                                Colors.white.withOpacity(0.1),
-                                          ),
-                                          child: Text("299грн")),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
+                        noy_recommendation_foods(
+                          img: "assets/noy/noy_bluda/category/garniri.jpg",
+                          price: "120грн",
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        noy_recommendation_foods(
+                          img: "assets/noy/noy_bluda/category/xolodnie.jpg",
+                          price: "299грн",
                         ),
                       ],
                     ),
                   ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  noy_selection_title(title: "Ближайщие мероприятия"),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Discount_Card(
+                      title: "Живая музыка",
+                      subtitle: "Каждую пятницу в 19.00",
+                      image: "assets/noy/noy_bg_img/music.jpg"),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Container(
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      width: double.infinity,
+                      child: Text(
+                        "Забронировать Стол",
+                        textAlign: TextAlign.center,
+                        style: kH3TitleBlack,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  noy_selection_title(title: "Новинки"),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: noy_recommendation_foods(
+                      widthImg: 380,
+                      img: "assets/noy/noy_bluda/category/desert.jpg",
+                      price: "150грн",
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      children: [
+                        noy_recommendation_foods(
+                          widthImg: 180,
+                          img: "assets/noy/noy_bluda/category/goryachie.jpg",
+                          price: "199грн",
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        noy_recommendation_foods(
+                          widthImg: 180,
+                          img: "assets/noy/noy_bluda/category/pasta.jpg",
+                          price: "299грн",
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  noy_selection_title(title: "Напитки"),
                   SizedBox(
                     height: 20,
                   ),
@@ -263,8 +251,8 @@ class _NoyScreenState extends State<NoyScreen> {
                   colors: [
                     Colors.transparent,
                     Colors.transparent,
-                    Colors.black.withOpacity(0.2),
-                    Colors.black.withOpacity(0.2),
+                    Colors.black.withOpacity(0.1),
+                    Colors.black.withOpacity(0.05),
                     Colors.black,
                   ],
                   stops: [
@@ -288,7 +276,7 @@ class _NoyScreenState extends State<NoyScreen> {
                     ),
                   ),
                   SizedBox(
-                    height: 0,
+                    height: 140,
                   ),
                 ],
               ),
@@ -296,6 +284,137 @@ class _NoyScreenState extends State<NoyScreen> {
           ),
         ),
       ],
+    );
+  }
+}
+
+class noy_selection_title extends StatelessWidget {
+  const noy_selection_title({
+    super.key,
+    required this.title,
+  });
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      child: Text(
+        title,
+        style: TextStyle(
+          fontSize: 20,
+          color: Colors.white38,
+        ),
+      ),
+    );
+  }
+}
+
+class noy_recommendation_foods extends StatelessWidget {
+  const noy_recommendation_foods({
+    super.key,
+    this.widthImg = 200,
+    required this.img,
+    required this.price,
+  });
+
+  final double widthImg;
+  final String img;
+  final String price;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {},
+      child: Column(
+        children: [
+          SizedBox(
+            width: 20,
+          ),
+          Container(
+            width: widthImg,
+            decoration: BoxDecoration(
+              color: Colors.black26,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Stack(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(15),
+                      child: Image.asset(
+                        img,
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                        height: 125,
+                      ),
+                    ),
+                    Positioned(right: 2, child: HeartIcon()),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 10,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Название",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 4,
+                      ),
+                      Container(
+                        height: 30,
+                        child: Text(
+                          "Яйцо, курица, курица, яйцо, зелень, капуста, сметана, сметана, сметана, сметана",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 12,
+                            color: Colors.white38,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 16,
+                      ),
+                      Center(
+                        child: Container(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 5, horizontal: 10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.white.withOpacity(0.1),
+                            ),
+                            child: Text(
+                              price,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

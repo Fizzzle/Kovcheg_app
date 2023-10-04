@@ -8,6 +8,11 @@ TextStyle kCategoryMenuText = TextStyle(
   fontWeight: FontWeight.bold,
 );
 
+TextStyle kCategoryScreenMenuText = TextStyle(
+  fontSize: 20,
+  fontWeight: FontWeight.bold,
+);
+
 // Text
 TextStyle kH2Text = TextStyle(fontSize: 28, fontWeight: FontWeight.bold);
 TextStyle kH1TextBlack = TextStyle(
