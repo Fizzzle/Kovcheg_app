@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../widgets/like_button.dart';
 
-class Gorod_recommendation_foods extends StatelessWidget {
-  const Gorod_recommendation_foods({
+class Gorod_popular_foods extends StatelessWidget {
+  const Gorod_popular_foods({
     super.key,
     this.widthImg = 200,
     required this.img,

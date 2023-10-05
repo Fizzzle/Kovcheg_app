@@ -1,18 +1,26 @@
 import 'package:flutter/material.dart';
 
 class HeartIcon extends StatefulWidget {
+  double iconSize;
+  double opacity;
+  double opacityEnd;
+
+  HeartIcon({
+    super.key,
+    this.iconSize = 30,
+    this.opacity = 0.8,
+    this.opacityEnd = 0.3,
+  });
   @override
   _HeartIconState createState() => _HeartIconState();
 }
 
 class _HeartIconState extends State<HeartIcon> {
   bool isFavorite = false;
-  double iconSize = 30;
 
   void _toggleFavorite() {
     setState(() {
       isFavorite = !isFavorite;
-      iconSize = 30;
     });
   }
 
@@ -26,8 +34,8 @@ class _HeartIconState extends State<HeartIcon> {
         padding: EdgeInsets.all(5),
         decoration: BoxDecoration(
           color: isFavorite
-              ? Colors.white.withOpacity(0.3)
-              : Colors.white.withOpacity(0.8),
+              ? Colors.white.withOpacity(widget.opacityEnd)
+              : Colors.white.withOpacity(widget.opacity),
           borderRadius: BorderRadius.circular(isFavorite ? 10 : 20),
           boxShadow: [
             BoxShadow(
@@ -42,7 +50,7 @@ class _HeartIconState extends State<HeartIcon> {
         child: Icon(
           isFavorite ? Icons.favorite : Icons.favorite_border,
           color: isFavorite ? Colors.red : Colors.black,
-          size: iconSize,
+          size: widget.iconSize,
           shadows: [
             BoxShadow(
               color: Colors.black45, // цвет тени

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:noy_kovcheg/constants/const.dart';
+import 'package:noy_kovcheg/new_icons_icons.dart';
 import 'package:noy_kovcheg/widgets/kovcher_appbar.dart';
-
-import '../../widgets/discount_card.dart';
-import 'gorod_recomendation_food.dart';
+import 'gorod_popular_food.dart';
+import 'gorod_recommendation_food.dart';
 
 class GorodScreen extends StatefulWidget {
   const GorodScreen({super.key});
@@ -117,7 +117,7 @@ class _GorodScreenState extends State<GorodScreen> {
                           ),
                           child: IconButton(
                             onPressed: () {},
-                            icon: Icon(Icons.no_food),
+                            icon: Icon(New_icons.fast_food),
                           ),
                         ),
                         SizedBox(
@@ -136,27 +136,34 @@ class _GorodScreenState extends State<GorodScreen> {
                     SizedBox(
                       width: 10,
                     ),
-                    category_food(Icons.fastfood, "Горячее"),
+                    category_food(
+                        New_icons
+                            .free_icon_food_and_restaurant_mega_pack_color_9163164,
+                        "Горячее"),
                     SizedBox(
                       width: 10,
                     ),
-                    category_food(Icons.local_florist_rounded, "Ролы"),
+                    category_food(New_icons.food_chain, "Ролы"),
                     SizedBox(
                       width: 10,
                     ),
-                    category_food(Icons.favorite_sharp, "Салат"),
+                    category_food(
+                        New_icons.free_icon_food_delivery_2827606, "Пицца"),
                     SizedBox(
                       width: 10,
                     ),
-                    category_food(Icons.no_food, "Мясо"),
+                    category_food(
+                        New_icons.free_icon_cocktail_754363, "Коктейли"),
                     SizedBox(
                       width: 10,
                     ),
-                    category_food(Icons.no_food, "WOK"),
+                    category_food(
+                        New_icons.free_icon_milkshake_7441492, "Милк Шейки"),
                     SizedBox(
                       width: 10,
                     ),
-                    category_food(Icons.no_food, "Maki"),
+                    category_food(
+                        New_icons.free_icon_water_bottle_7842880, "Вода"),
                     SizedBox(
                       width: 10,
                     ),
@@ -176,21 +183,21 @@ class _GorodScreenState extends State<GorodScreen> {
                   SizedBox(
                     width: 20,
                   ),
-                  Gorod_recommendation_foods(
+                  Gorod_popular_foods(
                       img: 'assets/noy/noy_bluda/category/garniri.jpg',
                       price: '200',
                       timer: "20мин"),
                   SizedBox(
                     width: 20,
                   ),
-                  Gorod_recommendation_foods(
+                  Gorod_popular_foods(
                       img: 'assets/noy/noy_bluda/category/hosper.jpg',
                       price: '320',
                       timer: "60мин"),
                   SizedBox(
                     width: 20,
                   ),
-                  Gorod_recommendation_foods(
+                  Gorod_popular_foods(
                       img: 'assets/noy/noy_bluda/category/set_rolov.jpg',
                       price: '100',
                       timer: "30мин"),
@@ -203,9 +210,40 @@ class _GorodScreenState extends State<GorodScreen> {
               SizedBox(
                 height: 20,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Row(children: []),
+              Container(
+                height: 190,
+                child: ListView(scrollDirection: Axis.horizontal, children: [
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Gorod_recomendation_card(
+                    img: "assets/noy/noy_bluda/category/hosper.jpg",
+                    name: "Дикая доска",
+                    weight: "300гр",
+                    price: "200грн",
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Gorod_recomendation_card(
+                    img: "assets/noy/noy_bluda/category/desert.jpg",
+                    name: "Сладкая Бомба",
+                    weight: "150гр",
+                    price: "100грн",
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Gorod_recomendation_card(
+                    img: "assets/noy/noy_bluda/category/set_rolov.jpg",
+                    name: "Сет Ролов",
+                    weight: "500гр",
+                    price: "360грн",
+                  ),
+                ]),
+              ),
+              SizedBox(
+                height: 20,
               ),
               gorod_title_category(title: "Напитки"),
               SizedBox(

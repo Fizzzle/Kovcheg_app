@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   shared_preferences: ^2.2.1
   flutter_barcode_scanner: ^2.0.0
+  fluttericon: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -96,6 +97,9 @@ flutter:
     - family: Montserrat
       fonts:
         - asset: fonts/Montserrat-VariableFont_wght.ttf
+    - family:  New_icons
+      fonts:
+        - asset: fonts/New_icons.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
