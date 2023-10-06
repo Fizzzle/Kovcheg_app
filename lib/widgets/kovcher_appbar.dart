@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:noy_kovcheg/constants/const.dart';
 import 'package:noy_kovcheg/screens/qr_cam.dart';
 
 class AppBarKovcheg extends StatelessWidget implements PreferredSizeWidget {
@@ -6,8 +7,15 @@ class AppBarKovcheg extends StatelessWidget implements PreferredSizeWidget {
   final Size preferredSize;
   final String img;
   final Color color;
+  final bool title;
+  final String titleText;
 
-  AppBarKovcheg({Key? key, required this.img, required this.color})
+  AppBarKovcheg(
+      {Key? key,
+      required this.img,
+      required this.color,
+      this.title = false,
+      this.titleText = 'null'})
       : preferredSize = const Size.fromHeight(56.0);
 
   @override
@@ -27,10 +35,15 @@ class AppBarKovcheg extends StatelessWidget implements PreferredSizeWidget {
               .pop(); // При нажатии на кнопку "назад" будет выполнен возврат на предыдущий экран
         },
       ),
-      title: Image.asset(
-        img,
-        height: 40,
-      ),
+      title: title
+          ? Text(
+              titleText,
+              style: kH3TitleBlack,
+            )
+          : Image.asset(
+              img,
+              height: 40,
+            ),
       actions: [
         IconButton(
           onPressed: () {

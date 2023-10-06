@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../widgets/like_button.dart';
+import '../../../widgets/like_button.dart';
 
 class Gorod_popular_foods extends StatelessWidget {
   const Gorod_popular_foods({

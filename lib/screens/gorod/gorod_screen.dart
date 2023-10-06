@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:noy_kovcheg/constants/const.dart';
 import 'package:noy_kovcheg/new_icons_icons.dart';
 import 'package:noy_kovcheg/widgets/kovcher_appbar.dart';
-import 'gorod_popular_food.dart';
-import 'gorod_recommendation_food.dart';
+
+import '../../widgets/kovcher_bottombar.dart';
+import 'gorod_category_screen.dart';
+import 'models/gorod_popular_food.dart';
+import 'models/gorod_recommendation_food.dart';
 
 class GorodScreen extends StatefulWidget {
   const GorodScreen({super.key});
@@ -21,6 +24,7 @@ class _GorodScreenState extends State<GorodScreen> {
         color: Color.fromARGB(255, 229, 106, 106),
       ),
       backgroundColor: Colors.grey[200],
+      bottomNavigationBar: kovcher_bottomBar(),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(
@@ -318,12 +322,24 @@ class gorod_title_category extends StatelessWidget {
                   )
                 ]),
           ),
-          Text(
-            "посмотреть все",
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w900,
-              color: Colors.orange[900],
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => Gorod_Category_Screen(
+                    name: title,
+                  ),
+                ),
+              );
+            },
+            child: Text(
+              "посмотреть все",
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w900,
+                color: Colors.orange[900],
+              ),
             ),
           ),
         ],
