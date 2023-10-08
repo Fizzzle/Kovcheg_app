@@ -3,6 +3,7 @@ import 'package:noy_kovcheg/animations/fade_animation.dart';
 import 'package:noy_kovcheg/screens/noy/noy_screen.dart';
 
 import '../constants/const.dart';
+import '../models/vertical_home_page.dart';
 import 'gorod/gorod_screen.dart';
 import 'ostrov/ostrov_screen.dart';
 
@@ -71,110 +72,7 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: AnimatedBuilder(
-            animation: _controller,
-            builder: (context, child) {
-              return Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Colors.green.withOpacity(0.2),
-                      Colors.black.withOpacity(0.2),
-                      Colors.grey.withOpacity(0.2),
-                      Colors.white.withOpacity(0.2),
-                      Colors.amber.withOpacity(0.2),
-                      Colors.yellow.withOpacity(0.2),
-                    ],
-                    begin: _topAlignmentAnimation.value,
-                    end: _bottomAlignmentAnimation.value,
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Center(
-                        child: Text(
-                          "Выбери свой этаж",
-                          style: kH2Text,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      noy_home(context, NoyScreen()),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "5 этаж 12.00 - 23.00 | Есть генератор",
-                            style: kSpanHome,
-                          ),
-                          Icon(
-                            Icons.electric_bolt,
-                            color: Colors.yellow,
-                            size: 16,
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      ostrov_home(context, OstrovScreen()),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "3 этаж 10.00 - 22.00 | Есть генератор",
-                            style: kSpanHome,
-                          ),
-                          Icon(
-                            Icons.electric_bolt,
-                            color: Colors.yellow,
-                            size: 16,
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      gorod_home(context, GorodScreen()),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "2 этаж 12.00 - 22.00 | Есть генератор",
-                            style: kSpanHome,
-                          ),
-                          Icon(
-                            Icons.electric_bolt,
-                            color: Colors.yellow,
-                            size: 16,
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            }),
-      ),
+      body: VerticalHomePages(),
     );
   }
 
