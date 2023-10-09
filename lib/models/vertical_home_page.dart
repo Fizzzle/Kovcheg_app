@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:noy_kovcheg/widgets/blur_container.dart';
 import 'package:vertical_card_pager/vertical_card_pager.dart';
 
 import '../constants/const.dart';
@@ -19,9 +18,9 @@ class _VerticalHomePagesState extends State<VerticalHomePages> {
   late String img = 'assets/home_img/background.jpg';
 
   final List<String> titles = [
-    "Noy",
-    "Ostrov",
-    "Gorod",
+    "",
+    "",
+    "",
   ];
 
   final List<String> timeWork = [
@@ -89,9 +88,8 @@ class _VerticalHomePagesState extends State<VerticalHomePages> {
               SizedBox(
                 height: 20,
               ),
-              Container(
-                width: double.infinity,
-                height: 600,
+              Expanded(
+                flex: 14,
                 child: VerticalCardPager(
                   onPageChanged: (index) {
                     setState(() {
@@ -133,13 +131,15 @@ class _VerticalHomePagesState extends State<VerticalHomePages> {
                   },
                 ),
               ),
-              Builder(
-                builder: (BuildContext context) {
-                  return Text(
-                    texting,
-                    style: kSpanHome,
-                  );
-                },
+              Expanded(
+                child: Builder(
+                  builder: (BuildContext context) {
+                    return Text(
+                      texting,
+                      style: kSpanHome,
+                    );
+                  },
+                ),
               ),
             ],
           ),

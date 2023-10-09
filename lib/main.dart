@@ -59,6 +59,8 @@ class _OnBoardingState extends State<OnBoarding> {
                 title: "Получай максимальные возможности",
                 subtitle:
                     "Узнавай первым про бонусы, скидки, новинки, специальные предложения и праздничные мероприятия",
+                buttonText: 'Продолжить',
+                functionButton: (),
               ),
             ),
             GestureDetector(
@@ -67,11 +69,13 @@ class _OnBoardingState extends State<OnBoarding> {
                 curve: Curves.easeInOut,
               ),
               child: buildPage(
-                color: Color.fromARGB(255, 240, 255, 127),
+                color: Colors.white,
                 urlImage: "assets/onboarding_Img/pushNotifice.png",
                 title: "Получай уведомления",
                 subtitle:
                     "Про новые блюда, скидки, о вечере кино и о живой музыке и о твоих возможностях за бонусы",
+                buttonText: 'Продолжить',
+                functionButton: (),
               ),
             ),
             GestureDetector(
@@ -87,11 +91,13 @@ class _OnBoardingState extends State<OnBoarding> {
               },
               child: buildPage(
                 black: false,
-                color: Color.fromARGB(255, 12, 37, 68),
+                color: Colors.white,
                 urlImage: "assets/onboarding_Img/qqr.jpg",
                 title: "Будущие возможности \nИспользуй QRCode",
                 subtitle:
                     "Сканируй QR за столом раз в сутки и получай бонусные баллы, которые в будущем можно обменять на скидку \n выбор фильма на вечер кино Gorod и многое другое",
+                buttonText: 'Продолжить',
+                functionButton: (),
               ),
             ),
           ],
@@ -137,6 +143,8 @@ Widget buildPage({
   required String urlImage,
   required String title,
   required String subtitle,
+  required String buttonText,
+  required dynamic functionButton,
   bool black = true,
 }) =>
     Container(
@@ -175,7 +183,25 @@ Widget buildPage({
                 fontWeight: FontWeight.bold,
               ),
             ),
-          )
+          ),
+          /* TextButton(
+            onPressed: () => functionButton,
+            child: Container(
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 176, 206, 216),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                height: 50,
+                width: double.infinity,
+                child: Center(
+                    child: Text(
+                  buttonText,
+                  style: TextStyle(
+                    color: Colors.orange[900],
+                    fontWeight: FontWeight.bold,
+                  ),
+                ))),
+          ), */
         ],
       ),
     );
