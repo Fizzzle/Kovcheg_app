@@ -49,5 +49,5 @@ TextStyle kH3Title =
 TextStyle kH3SubTitle =
     TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Colors.white);
 
-TextStyle kSpanHome =
-    TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Colors.white54);
+TextStyle kSpanHome = TextStyle(
+    fontSize: 14, fontWeight: FontWeight.w600, color: Colors.orange[900]);

@@ -36,9 +36,9 @@ class _VerticalHomePagesState extends State<VerticalHomePages> {
   ];
 
   final List<String> backImgList = [
-    'assets/home_img/noy.png',
-    'assets/home_img/ostrov.jpg',
-    'assets/home_img/gorod.jpg',
+    'assets/home_img/background.jpg',
+    'assets/home_img/snim2.jpg',
+    'assets/home_img/snim3.jpg',
   ];
 
   final List<dynamic> pages = [

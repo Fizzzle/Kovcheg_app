@@ -93,7 +93,7 @@ class _GorodScreenState extends State<GorodScreen> {
                       ),
                       Image.asset(
                         "assets/noy/start_noy_img/5.png",
-                        width: 170,
+                        width: 150,
                       ),
                     ],
                   ),

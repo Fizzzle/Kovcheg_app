@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'screens/home_screen.dart';
 
 void main() {
@@ -59,8 +60,6 @@ class _OnBoardingState extends State<OnBoarding> {
                 title: "Получай максимальные возможности",
                 subtitle:
                     "Узнавай первым про бонусы, скидки, новинки, специальные предложения и праздничные мероприятия",
-                buttonText: 'Продолжить',
-                functionButton: (),
               ),
             ),
             GestureDetector(
@@ -70,12 +69,10 @@ class _OnBoardingState extends State<OnBoarding> {
               ),
               child: buildPage(
                 color: Colors.white,
-                urlImage: "assets/onboarding_Img/pushNotifice.png",
+                urlImage: "assets/onboarding_Img/notifi.jpg",
                 title: "Получай уведомления",
                 subtitle:
                     "Про новые блюда, скидки, о вечере кино и о живой музыке и о твоих возможностях за бонусы",
-                buttonText: 'Продолжить',
-                functionButton: (),
               ),
             ),
             GestureDetector(
@@ -90,41 +87,90 @@ class _OnBoardingState extends State<OnBoarding> {
                 );
               },
               child: buildPage(
-                black: false,
                 color: Colors.white,
-                urlImage: "assets/onboarding_Img/qqr.jpg",
+                urlImage: "assets/onboarding_Img/qr-ko.png",
                 title: "Будущие возможности \nИспользуй QRCode",
                 subtitle:
                     "Сканируй QR за столом раз в сутки и получай бонусные баллы, которые в будущем можно обменять на скидку \n выбор фильма на вечер кино Gorod и многое другое",
-                buttonText: 'Продолжить',
-                functionButton: (),
               ),
             ),
           ],
         ),
-        /*
         bottomSheet: isLastPage
-            ? TextButton(
-                style: TextButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                )),
-                onPressed: () {},
-                child: Text("Старт", style: TextStyle(fontSize: 30)),
-              )
+            ? Container(
+                color: Colors.white,
+                height: 80,
+                width: double.infinity,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextButton(
+                        onPressed: () async {
+                          /* 
+                final prefs = await SharedPreferences.getInstance();
+                prefs.setBool('showHome', true);
+                */
+
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(builder: (context) => HomePage()),
+                          );
+                        },
+                        child: Container(
+                            margin: EdgeInsets.symmetric(
+                              horizontal: 10,
+                            ),
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 20,
+                              vertical: 3,
+                            ),
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: Color.fromARGB(255, 224, 243, 253),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Text("Начать",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.orange[900]))),
+                      ),
+                    ]))
             : Container(
-                color: Colors.white.withOpacity(0.5),
-                height: 30,
-                child: Row(
+                color: Colors.white,
+                height: 80,
+                width: double.infinity,
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    TextButton(
+                      onPressed: () => controller.nextPage(
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.easeInOut,
+                      ),
+                      child: Container(
+                          margin: EdgeInsets.symmetric(
+                            horizontal: 10,
+                          ),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 20,
+                            vertical: 3,
+                          ),
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 224, 243, 253),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Text("Продолжить",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 20, color: Colors.orange[900]))),
+                    ),
                     SmoothPageIndicator(
                       controller: controller,
                       count: 3,
                       effect: WormEffect(
                         spacing: 16,
                         dotColor: Colors.black,
-                        activeDotColor: Colors.white,
+                        activeDotColor: Colors.grey,
                       ),
                       onDotClicked: (index) => controller.animateToPage(
                         index,
@@ -134,7 +180,7 @@ class _OnBoardingState extends State<OnBoarding> {
                     ),
                   ],
                 ),
-              ), */
+              ),
       );
 }
 
@@ -143,8 +189,6 @@ Widget buildPage({
   required String urlImage,
   required String title,
   required String subtitle,
-  required String buttonText,
-  required dynamic functionButton,
   bool black = true,
 }) =>
     Container(
