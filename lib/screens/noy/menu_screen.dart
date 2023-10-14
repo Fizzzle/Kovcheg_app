@@ -3,7 +3,6 @@ import 'package:noy_kovcheg/screens/noy/noy_category_screen.dart';
 import 'package:noy_kovcheg/widgets/kovcher_appbar.dart';
 
 import '../../constants/const.dart';
-import '../../models/noy_category.dart';
 import 'noyList/noyCategory.dart';
 
 class MenuNoyScreen extends StatelessWidget {

@@ -157,17 +157,15 @@ class _NoyScreenState extends State<NoyScreen> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         noy_recommendation_foods(
-                          widthImg: 180,
+                          widthImg: 170,
                           img: "assets/noy/noy_bluda/category/goryachie.jpg",
                           price: "199грн",
                         ),
-                        SizedBox(
-                          width: 10,
-                        ),
                         noy_recommendation_foods(
-                          widthImg: 180,
+                          widthImg: 170,
                           img: "assets/noy/noy_bluda/category/pasta.jpg",
                           price: "299грн",
                         ),

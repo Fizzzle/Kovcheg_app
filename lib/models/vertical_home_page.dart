@@ -57,7 +57,7 @@ class _VerticalHomePagesState extends State<VerticalHomePages> {
             image: DecorationImage(
                 fit: BoxFit.cover,
                 colorFilter: ColorFilter.mode(
-                    Colors.black.withOpacity(0.7), BlendMode.dstATop),
+                    Colors.black.withOpacity(0.8), BlendMode.dstATop),
                 image: AssetImage(image))),
       );
     }).toList();
@@ -69,7 +69,7 @@ class _VerticalHomePagesState extends State<VerticalHomePages> {
             image: AssetImage(img),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
-                Colors.black.withOpacity(0.1), BlendMode.dstATop),
+                Colors.black.withOpacity(0.3), BlendMode.dstATop),
           ),
         ),
         child: Padding(
