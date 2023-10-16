@@ -24,8 +24,11 @@ class _GorodScreenState extends State<GorodScreen> {
         color: Color.fromARGB(255, 229, 106, 106),
       ),
       backgroundColor: Colors.grey[200],
-      bottomNavigationBar: kovcher_bottomBar(),
+      bottomNavigationBar: kovcher_bottomBar(
+        currentIndex: 0,
+      ),
       body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

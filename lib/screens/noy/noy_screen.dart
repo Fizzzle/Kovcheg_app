@@ -6,7 +6,6 @@ import 'package:noy_kovcheg/widgets/image_list_view.dart';
 
 import '../../constants/const.dart';
 import '../../widgets/kovcher_appbar.dart';
-import '../../widgets/kovcher_bottombar.dart';
 import '../../widgets/like_button.dart';
 import 'noyList/noyCategory.dart';
 
@@ -27,7 +26,7 @@ class _NoyScreenState extends State<NoyScreen> {
         color: Colors.white,
       ),
       body: SingleChildScrollView(
-        physics: AlwaysScrollableScrollPhysics(),
+        physics: BouncingScrollPhysics(),
         child: SafeArea(
           child: Column(
             children: [

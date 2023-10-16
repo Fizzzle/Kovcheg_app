@@ -24,39 +24,92 @@ class _OstrovScreenState extends State<OstrovScreen> {
         color: Color.fromARGB(250, 245, 198, 140),
       ),
       body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: SafeArea(
           child: Column(
             children: [
-              Discount_Card(
-                  opacity: 0.5,
-                  title: "Детсткий мир",
-                  subtitle: "Лучшие аниматоры",
-                  image: "assets/ostrov/card/ostrovKids.jpg"),
+              Container(
+                margin: EdgeInsets.only(
+                  left: 20,
+                ),
+                child: Discount_Card(
+                    borderRadius: 1,
+                    radiusEgle: 20,
+                    textContainer: false,
+                    image: "assets/ostrov/card/showFirst.jpg"),
+              ),
+              Text(
+                "Создаем яркие \n десткие воспоминания",
+                textAlign: TextAlign.center,
+                style: kH2Text,
+              ),
               SizedBox(
                 height: 20,
               ),
               Discount_Card(
-                  title: "PS5",
-                  subtitle: "Лучшие новинки",
-                  black: false,
-                  image: "assets/ostrov/card/ps5game.jpg"),
+                  textContainer: false,
+                  image: "assets/ostrov/card/showtwo.jpg"),
               SizedBox(
                 height: 30,
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  children: [
-                    _category_list("Детсткие Комнаты", ostrovRoom,
-                        Icons.extension_outlined, true),
-                    _category_list("Игры на PS5", ostrovPS,
-                        Icons.sentiment_very_satisfied, false),
-                    Text(
-                      "Напитки",
-                      style: kH2Text,
-                    ),
-                  ],
-                ),
+              Column(
+                children: [
+                  _category_list("Детсткие Комнаты", ostrovRoom, true),
+                  Divider(
+                    color: Colors.black,
+                    thickness: 2,
+                    indent: 52,
+                    endIndent: 52,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    "Море возможностей \n для маленьких личностей",
+                    textAlign: TextAlign.center,
+                    style: kH2Text,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Discount_Card(
+                      textContainer: false,
+                      borderRadius: 2,
+                      image: "assets/ostrov/card/psshow.jpg"),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  _category_list("Игры на PS5", ostrovPS, false),
+                  Divider(
+                    color: Colors.black,
+                    thickness: 2,
+                    indent: 52,
+                    endIndent: 52,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    "Так же у нас можно вкусно \n покушать",
+                    textAlign: TextAlign.center,
+                    style: kH2Text,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Discount_Card(
+                      textContainer: false,
+                      borderRadius: 2,
+                      image: "assets/ostrov/card/showkyxn.jpg"),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    "Кухня/ Напитки",
+                    textAlign: TextAlign.center,
+                    style: kH2Text,
+                  ),
+                ],
               ),
             ],
           ),
@@ -65,23 +118,16 @@ class _OstrovScreenState extends State<OstrovScreen> {
     );
   }
 
-  FadeAnimation _category_list(text, listname, icon, room) {
+  FadeAnimation _category_list(text, listname, room) {
     return FadeAnimation(
       intervalEnd: 0.8,
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                text,
-                style: kH2Text,
-              ),
-              Icon(
-                icon,
-                size: 25,
-              )
-            ],
+          Center(
+            child: Text(
+              text,
+              style: kH2Text,
+            ),
           ),
           SizedBox(
             height: 20,
@@ -92,6 +138,7 @@ class _OstrovScreenState extends State<OstrovScreen> {
               itemCount: listname.length,
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
+              physics: BouncingScrollPhysics(),
               itemExtent: 100,
               itemBuilder: ((context, index) => GestureDetector(
                     onTap: () {
